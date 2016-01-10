@@ -42,6 +42,16 @@ public class Shop
     public string description;
     public byte[] data;
 }
+public class Item
+{
+    public int id;
+    public int shopid;
+    public string name;
+    public string description;
+    public int num;
+    public double price;
+    public byte[] picture;
+}
 public class DataBase
 {
     private bool login;
@@ -175,5 +185,52 @@ public class DataBase
         cmd.Parameters.AddWithValue("@DATA", shop.data);
         int result = cmd.ExecuteNonQuery();
         return result == 1 ? true : false;
+    }
+    public bool additem(Item item)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "insert into s_item values(@SHOPID,@NAME,@DESCRIPTION,@NUM,@PRICE,@PICTURE);";
+        cmd.Parameters.AddWithValue("@SHOPID", item.shopid);
+        cmd.Parameters.AddWithValue("@NAME", item.name);
+        cmd.Parameters.AddWithValue("@DESCRIPTION", item.description);
+        cmd.Parameters.AddWithValue("@NUM", item.num);
+        cmd.Parameters.AddWithValue("@PRICE", item.price);
+        cmd.Parameters.AddWithValue("@PICTURE", item.picture);
+        int result = cmd.ExecuteNonQuery();
+        return result == 1 ? true : false;
+    }
+    private int countitems(int shopid)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "select count(*) from s_item where shopid = @SHOPID";
+        cmd.Parameters.AddWithValue("@SHOPID", shopid);
+        return (int)cmd.ExecuteScalar();
+    }
+    public Item[] showitems(int shopid)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "showitems @SHOPID";
+        cmd.Parameters.AddWithValue("@SHOPID", shopid);
+        int num = countitems(shopid);
+        if (num == 0)
+        {
+            return null;
+        }
+        SqlDataReader reader = cmd.ExecuteReader();
+        Item[] result = new Item[num];
+        int i = 0;
+        while (reader.Read())
+        {
+            result[i] = new Item();
+            result[i].id = reader.GetInt32(0);
+            result[i].shopid = shopid;
+            result[i].name = reader.GetString(2);
+            result[i].description = reader.IsDBNull(3) ? null : reader.GetString(3);
+            result[i].num = reader.GetInt32(4);
+            result[i].price = reader.GetDouble(5);
+            result[i].picture = reader.IsDBNull(6) ? null : (byte[])reader.GetValue(6);
+        }
+        reader.Close();
+        return result;
     }
 }

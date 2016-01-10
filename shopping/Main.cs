@@ -16,6 +16,7 @@ namespace shopping
         private DataBase DB;
         private System.Windows.Forms.Panel[] panels;
         private int panelNum;
+        private byte[] temp_itempicture;
         public Main(DataBase db)
         {
             DB = db;
@@ -82,12 +83,15 @@ namespace shopping
         private void myshopMenu_Click(object sender, EventArgs e)
         {
             hideAllPanel();
+            //准备商店信息
             shopnameBox.Text = DB.shop.name;
             shopdesBox.Text = DB.shop.description;
             MemoryStream ms = new MemoryStream();
             ms.Write(DB.shop.data,0, DB.shop.data.Length);
             Image img = Image.FromStream(ms);
             shoppictureBox.Image = img;
+            //准备所有商品
+            Item[] items = DB.showitems(DB.shop.id);
             panels[2].Show();
         }
 
@@ -151,6 +155,47 @@ namespace shopping
             else
             {
                 MessageBox.Show("保存失败", "提示");
+            }
+        }
+
+        private void itempictureBox_Click(object sender, EventArgs e)
+        {
+            string picFilename;
+            openFileDialog1.Filter = "图片文件(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF";
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                picFilename = openFileDialog1.FileName;
+                FileStream fs = new FileStream(picFilename, FileMode.Open);
+                Image img = Image.FromStream(fs);
+                itempictureBox.Image = img;
+                MemoryStream ms = new MemoryStream();
+                img.Save(ms, img.RawFormat);
+                byte[] buffer = new byte[ms.Length];
+                ms.Seek(0, SeekOrigin.Begin);
+                ms.Read(buffer, 0, buffer.Length);
+                fs.Close();
+                temp_itempicture = buffer;
+            }
+        }
+
+        private void additembutton_Click(object sender, EventArgs e)
+        {
+            Item item = new Item();
+            item.shopid = DB.shop.id;
+            item.name = itemnameBox.Text;
+            item.description = itemdesBox.Text;
+            item.num = Convert.ToInt32(itemnumBox.Text);
+            item.price = Convert.ToDouble(itempriceBox.Text);
+            item.picture = temp_itempicture;
+            bool mark = DB.additem(item);
+            if (mark)
+            {
+                MessageBox.Show("添加成功", "提示");
+            }
+            else
+            {
+                MessageBox.Show("添加失败", "提示");
             }
         }
     }

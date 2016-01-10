@@ -36,6 +36,18 @@
             this.allshopMenu = new System.Windows.Forms.Button();
             this.manageMenu = new System.Windows.Forms.Button();
             this.myshoppanel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.itempriceBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.additembutton = new System.Windows.Forms.Button();
+            this.itemnumBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.itemdesBox = new System.Windows.Forms.RichTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.itemnameBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.itempictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.shopinfobutton = new System.Windows.Forms.Button();
             this.shoppictureBox = new System.Windows.Forms.PictureBox();
@@ -58,29 +70,18 @@
             this.addressBox = new System.Windows.Forms.TextBox();
             this.balanceBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.itempictureBox = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.itemnameBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.itemdesBox = new System.Windows.Forms.RichTextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.itemnumBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.itempriceBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.myshoppanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itempictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppictureBox)).BeginInit();
             this.infopanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itempictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -199,6 +200,7 @@
             // 
             // myshoppanel
             // 
+            this.myshoppanel.Controls.Add(this.tableLayoutPanel2);
             this.myshoppanel.Controls.Add(this.panel2);
             this.myshoppanel.Controls.Add(this.panel1);
             this.myshoppanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -206,6 +208,129 @@
             this.myshoppanel.Name = "myshoppanel";
             this.myshoppanel.Size = new System.Drawing.Size(700, 561);
             this.myshoppanel.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.ColumnCount = 5;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 240);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(680, 309);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.itempriceBox);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.additembutton);
+            this.panel2.Controls.Add(this.itemnumBox);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.itemdesBox);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.itemnameBox);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.itempictureBox);
+            this.panel2.Location = new System.Drawing.Point(8, 126);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(680, 108);
+            this.panel2.TabIndex = 1;
+            // 
+            // itempriceBox
+            // 
+            this.itempriceBox.Location = new System.Drawing.Point(173, 37);
+            this.itempriceBox.Name = "itempriceBox";
+            this.itempriceBox.Size = new System.Drawing.Size(78, 21);
+            this.itempriceBox.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(138, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "单价";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // additembutton
+            // 
+            this.additembutton.Location = new System.Drawing.Point(75, 73);
+            this.additembutton.Name = "additembutton";
+            this.additembutton.Size = new System.Drawing.Size(95, 31);
+            this.additembutton.TabIndex = 7;
+            this.additembutton.Text = "添加商品";
+            this.additembutton.UseVisualStyleBackColor = true;
+            this.additembutton.Click += new System.EventHandler(this.additembutton_Click);
+            // 
+            // itemnumBox
+            // 
+            this.itemnumBox.Location = new System.Drawing.Point(75, 37);
+            this.itemnumBox.Name = "itemnumBox";
+            this.itemnumBox.Size = new System.Drawing.Size(48, 21);
+            this.itemnumBox.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 43);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "商品数量";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // itemdesBox
+            // 
+            this.itemdesBox.Location = new System.Drawing.Point(254, 0);
+            this.itemdesBox.Name = "itemdesBox";
+            this.itemdesBox.Size = new System.Drawing.Size(314, 104);
+            this.itemdesBox.TabIndex = 4;
+            this.itemdesBox.Text = "";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(195, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "商品描述";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // itemnameBox
+            // 
+            this.itemnameBox.Location = new System.Drawing.Point(75, 9);
+            this.itemnameBox.Name = "itemnameBox";
+            this.itemnameBox.Size = new System.Drawing.Size(100, 21);
+            this.itemnameBox.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "商品名称";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // itempictureBox
+            // 
+            this.itempictureBox.Location = new System.Drawing.Point(577, 3);
+            this.itempictureBox.Name = "itempictureBox";
+            this.itempictureBox.Size = new System.Drawing.Size(100, 100);
+            this.itempictureBox.TabIndex = 0;
+            this.itempictureBox.TabStop = false;
+            this.itempictureBox.Click += new System.EventHandler(this.itempictureBox_Click);
             // 
             // panel1
             // 
@@ -433,110 +558,6 @@
             this.balanceBox.TabIndex = 10;
             this.balanceBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.itempriceBox);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.itemnumBox);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.itemdesBox);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.itemnameBox);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.itempictureBox);
-            this.panel2.Location = new System.Drawing.Point(8, 126);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(680, 108);
-            this.panel2.TabIndex = 1;
-            // 
-            // itempictureBox
-            // 
-            this.itempictureBox.Location = new System.Drawing.Point(577, 3);
-            this.itempictureBox.Name = "itempictureBox";
-            this.itempictureBox.Size = new System.Drawing.Size(100, 100);
-            this.itempictureBox.TabIndex = 0;
-            this.itempictureBox.TabStop = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 12);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "商品名称";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itemnameBox
-            // 
-            this.itemnameBox.Location = new System.Drawing.Point(75, 9);
-            this.itemnameBox.Name = "itemnameBox";
-            this.itemnameBox.Size = new System.Drawing.Size(100, 21);
-            this.itemnameBox.TabIndex = 2;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(195, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "商品描述";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itemdesBox
-            // 
-            this.itemdesBox.Location = new System.Drawing.Point(254, 0);
-            this.itemdesBox.Name = "itemdesBox";
-            this.itemdesBox.Size = new System.Drawing.Size(314, 104);
-            this.itemdesBox.TabIndex = 4;
-            this.itemdesBox.Text = "";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 43);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "商品数量";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itemnumBox
-            // 
-            this.itemnumBox.Location = new System.Drawing.Point(75, 37);
-            this.itemnumBox.Name = "itemnumBox";
-            this.itemnumBox.Size = new System.Drawing.Size(48, 21);
-            this.itemnumBox.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(75, 73);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "添加商品";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(138, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "单价";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itempriceBox
-            // 
-            this.itempriceBox.Location = new System.Drawing.Point(173, 37);
-            this.itempriceBox.Name = "itempriceBox";
-            this.itempriceBox.Size = new System.Drawing.Size(78, 21);
-            this.itempriceBox.TabIndex = 9;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -555,15 +576,15 @@
             this.splitContainer1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.myshoppanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itempictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppictureBox)).EndInit();
             this.infopanel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itempictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -603,7 +624,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox itempriceBox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button additembutton;
         private System.Windows.Forms.TextBox itemnumBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RichTextBox itemdesBox;
@@ -611,5 +632,6 @@
         private System.Windows.Forms.TextBox itemnameBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox itempictureBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
