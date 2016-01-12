@@ -31,22 +31,27 @@ namespace shopping
                     infoMenu.Show();
                     allshopMenu.Show();
                     myorderMenu.Show();
+                    this.allshoppanel.Controls.Add(this.itemstableLayout);
                     break;
                 case 2:
                     infoMenu.Show();
                     myshopMenu.Show();
                     myorderMenu.Show();
+                    this.myshoppanel.Controls.Add(this.itemstableLayout);
                     break;
                 case 3:
                     manageMenu.Show();
+                    statisticsMenu.Show();
                     break;
             }
-            panelNum = 4;
+            panelNum = 6;
             panels = new System.Windows.Forms.Panel[panelNum];
             panels[0] = infopanel;
             panels[1] = myorderpanel;
             panels[2] = myshoppanel;
             panels[3] = allshoppanel;
+            panels[4] = usermanagepanel;
+            panels[5] = statisticspanel;
             hideAllPanel();
         }
 
@@ -166,6 +171,7 @@ namespace shopping
             {
                 orders = DB.showorders(2, DB.shop.id);
             }
+            orderlistView.BeginUpdate();
             for (int i = 0; i < orders.Length; i++) 
             {
                 ListViewItem item = new ListViewItem();
@@ -191,7 +197,50 @@ namespace shopping
                 item.SubItems.Add(statusstring);
                 orderlistView.Items.Add(item);
             }
-            
+            orderlistView.EndUpdate();
+        }
+
+        private void updateUsers()
+        {
+            userslistView.Items.Clear();
+            User[] users = DB.showusers();
+            orderlistView.BeginUpdate();
+            for (int i = 0; i < users.Length; i++)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Text = users[i].id.ToString();
+                item.SubItems.Add(users[i].username);
+                string shenfenstring = "";
+                if (users[i].role == 1)
+                {
+                    shenfenstring = "顾客";
+                }
+                else if (users[i].role == 2)
+                {
+                    shenfenstring = "商家";
+                }
+                else
+                {
+                    shenfenstring = "管理员";
+                }
+                item.SubItems.Add(shenfenstring);
+                item.SubItems.Add(users[i].name);
+                item.SubItems.Add(users[i].phone);
+                item.SubItems.Add(users[i].address);
+                item.SubItems.Add(users[i].balance.ToString());
+                string statusstring = "";
+                if (users[i].status == 0)
+                {
+                    statusstring = "正常";
+                }
+                else if (users[i].status == 1)
+                {
+                    statusstring = "冻结";
+                }
+                item.SubItems.Add(statusstring);
+                userslistView.Items.Add(item);
+            }
+            userslistView.EndUpdate();
         }
 
         private void item_MouseEnter(object sender, EventArgs e)
@@ -312,7 +361,9 @@ namespace shopping
 
         private void manageMenu_Click(object sender, EventArgs e)
         {
-
+            hideAllPanel();
+            updateUsers();
+            panels[4].Show();
         }
 
         private void save_button_Click(object sender, EventArgs e)
@@ -447,6 +498,52 @@ namespace shopping
                 
             }
             
+        }
+
+        private void userslistView_DoubleClick(object sender, EventArgs e)
+        {
+            ListView listview = (ListView)sender;
+            foreach (ListViewItem lvi in listview.SelectedItems)
+            {
+                if(lvi.SubItems[2].Text.CompareTo("管理员") == 0)
+                {
+                    continue;
+                }
+                else if (lvi.SubItems[7].Text.CompareTo("冻结") == 0)
+                {
+                    if (DialogResult.Yes == MessageBox.Show("是否解冻该用户?", "确认", MessageBoxButtons.YesNo))
+                    {
+                        int userid = Convert.ToInt32(lvi.Text);
+                        DB.updateuser(userid, 0);
+                        updateUsers();
+                    }
+                }
+                else
+                {
+                    if (DialogResult.Yes == MessageBox.Show("是否冻结该用户?", "确认", MessageBoxButtons.YesNo))
+                    {
+                        int userid = Convert.ToInt32(lvi.Text);
+                        DB.updateuser(userid, 1);
+                        updateUsers();
+                    }
+                }
+                
+            }
+        }
+
+        private void statisticsMenu_Click(object sender, EventArgs e)
+        {
+            hideAllPanel();
+            shopsales[] sales = DB.statistics();
+            List<string> xData = new List<string>();
+            List<double> yData = new List<double>();
+            for (int i = 0; i < sales.Length; i++) 
+            {
+                xData.Add(sales[i].shopname);
+                yData.Add(sales[i].sales);
+            }
+            statisticschart.Series[0].Points.DataBindXY(xData, yData);
+            statisticspanel.Show();
         }
     }
 }

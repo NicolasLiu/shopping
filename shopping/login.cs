@@ -22,12 +22,16 @@ namespace shopping
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool login = DB.Login(textBox1.Text,textBox2.Text);
-            if(login)
+            int login = DB.Login(textBox1.Text,textBox2.Text);
+            if (login == 0)
             {
                 this.Close();
             }
-            else
+            else if (login == 1)
+            {
+                MessageBox.Show("账号被冻结", "提示");
+            }
+            else if(login == 2)
             {
                 MessageBox.Show("用户名或密码错误", "提示");
             }

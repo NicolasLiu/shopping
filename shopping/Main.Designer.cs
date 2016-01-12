@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.infoMenu = new System.Windows.Forms.Button();
@@ -35,7 +39,30 @@
             this.myshopMenu = new System.Windows.Forms.Button();
             this.allshopMenu = new System.Windows.Forms.Button();
             this.manageMenu = new System.Windows.Forms.Button();
+            this.statisticsMenu = new System.Windows.Forms.Button();
+            this.statisticspanel = new System.Windows.Forms.Panel();
+            this.statisticschart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.usermanagepanel = new System.Windows.Forms.Panel();
+            this.userslistView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.allshoppanel = new System.Windows.Forms.Panel();
+            this.shopstableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.myorderpanel = new System.Windows.Forms.Panel();
+            this.orderlistView = new System.Windows.Forms.ListView();
+            this.orderidHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.priceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.numHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.infopanel = new System.Windows.Forms.Panel();
             this.save_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -68,23 +95,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.shopnameBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.allshoppanel = new System.Windows.Forms.Panel();
-            this.shopstableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.itemstableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.orderlistView = new System.Windows.Forms.ListView();
-            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.priceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.numHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.userHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.orderidHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.statisticspanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticschart)).BeginInit();
+            this.usermanagepanel.SuspendLayout();
+            this.allshoppanel.SuspendLayout();
             this.myorderpanel.SuspendLayout();
             this.infopanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -93,7 +114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.itempictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppictureBox)).BeginInit();
-            this.allshoppanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -108,10 +128,12 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.statisticspanel);
+            this.splitContainer1.Panel2.Controls.Add(this.usermanagepanel);
+            this.splitContainer1.Panel2.Controls.Add(this.allshoppanel);
             this.splitContainer1.Panel2.Controls.Add(this.myorderpanel);
             this.splitContainer1.Panel2.Controls.Add(this.infopanel);
             this.splitContainer1.Panel2.Controls.Add(this.myshoppanel);
-            this.splitContainer1.Panel2.Controls.Add(this.allshoppanel);
             this.splitContainer1.Size = new System.Drawing.Size(784, 561);
             this.splitContainer1.SplitterDistance = 80;
             this.splitContainer1.TabIndex = 0;
@@ -124,6 +146,7 @@
             this.flowLayoutPanel1.Controls.Add(this.myshopMenu);
             this.flowLayoutPanel1.Controls.Add(this.allshopMenu);
             this.flowLayoutPanel1.Controls.Add(this.manageMenu);
+            this.flowLayoutPanel1.Controls.Add(this.statisticsMenu);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -211,6 +234,161 @@
             this.manageMenu.Visible = false;
             this.manageMenu.Click += new System.EventHandler(this.manageMenu_Click);
             // 
+            // statisticsMenu
+            // 
+            this.statisticsMenu.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.statisticsMenu.FlatAppearance.BorderSize = 0;
+            this.statisticsMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.statisticsMenu.ForeColor = System.Drawing.SystemColors.Window;
+            this.statisticsMenu.Location = new System.Drawing.Point(0, 200);
+            this.statisticsMenu.Margin = new System.Windows.Forms.Padding(0);
+            this.statisticsMenu.Name = "statisticsMenu";
+            this.statisticsMenu.Size = new System.Drawing.Size(80, 40);
+            this.statisticsMenu.TabIndex = 5;
+            this.statisticsMenu.Text = "统计图表";
+            this.statisticsMenu.UseVisualStyleBackColor = false;
+            this.statisticsMenu.Visible = false;
+            this.statisticsMenu.Click += new System.EventHandler(this.statisticsMenu_Click);
+            // 
+            // statisticspanel
+            // 
+            this.statisticspanel.Controls.Add(this.statisticschart);
+            this.statisticspanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statisticspanel.Location = new System.Drawing.Point(0, 0);
+            this.statisticspanel.Name = "statisticspanel";
+            this.statisticspanel.Size = new System.Drawing.Size(700, 561);
+            this.statisticspanel.TabIndex = 1;
+            // 
+            // statisticschart
+            // 
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.Name = "ChartArea1";
+            this.statisticschart.ChartAreas.Add(chartArea1);
+            this.statisticschart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            this.statisticschart.Legends.Add(legend1);
+            this.statisticschart.Location = new System.Drawing.Point(0, 0);
+            this.statisticschart.Name = "statisticschart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.IsValueShownAsLabel = true;
+            series1.Label = "#VALX:#PERCENT{P1}";
+            series1.LabelBackColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.statisticschart.Series.Add(series1);
+            this.statisticschart.Size = new System.Drawing.Size(700, 561);
+            this.statisticschart.TabIndex = 0;
+            this.statisticschart.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "各商店销售额比例";
+            this.statisticschart.Titles.Add(title1);
+            // 
+            // usermanagepanel
+            // 
+            this.usermanagepanel.Controls.Add(this.userslistView);
+            this.usermanagepanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usermanagepanel.Location = new System.Drawing.Point(0, 0);
+            this.usermanagepanel.Name = "usermanagepanel";
+            this.usermanagepanel.Size = new System.Drawing.Size(700, 561);
+            this.usermanagepanel.TabIndex = 0;
+            // 
+            // userslistView
+            // 
+            this.userslistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6,
+            this.columnHeader7,
+            this.columnHeader8});
+            this.userslistView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userslistView.FullRowSelect = true;
+            this.userslistView.GridLines = true;
+            this.userslistView.Location = new System.Drawing.Point(0, 0);
+            this.userslistView.Name = "userslistView";
+            this.userslistView.Size = new System.Drawing.Size(700, 561);
+            this.userslistView.TabIndex = 0;
+            this.userslistView.UseCompatibleStateImageBehavior = false;
+            this.userslistView.View = System.Windows.Forms.View.Details;
+            this.userslistView.DoubleClick += new System.EventHandler(this.userslistView_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "用户编号";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "登录名";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 80;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "身份";
+            this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader3.Width = 80;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "姓名";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 80;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "手机号码";
+            this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "地址";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader6.Width = 160;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "余额";
+            this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader7.Width = 80;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "状态";
+            this.columnHeader8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // allshoppanel
+            // 
+            this.allshoppanel.Controls.Add(this.shopstableLayout);
+            this.allshoppanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allshoppanel.Location = new System.Drawing.Point(0, 0);
+            this.allshoppanel.Name = "allshoppanel";
+            this.allshoppanel.Size = new System.Drawing.Size(700, 561);
+            this.allshoppanel.TabIndex = 0;
+            // 
+            // shopstableLayout
+            // 
+            this.shopstableLayout.AutoScroll = true;
+            this.shopstableLayout.ColumnCount = 4;
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.shopstableLayout.Location = new System.Drawing.Point(0, 0);
+            this.shopstableLayout.Name = "shopstableLayout";
+            this.shopstableLayout.RowCount = 2;
+            this.shopstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.shopstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.shopstableLayout.Size = new System.Drawing.Size(700, 561);
+            this.shopstableLayout.TabIndex = 0;
+            // 
             // myorderpanel
             // 
             this.myorderpanel.Controls.Add(this.orderlistView);
@@ -219,6 +397,69 @@
             this.myorderpanel.Name = "myorderpanel";
             this.myorderpanel.Size = new System.Drawing.Size(700, 561);
             this.myorderpanel.TabIndex = 0;
+            // 
+            // orderlistView
+            // 
+            this.orderlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.orderidHeader,
+            this.nameHeader,
+            this.priceHeader,
+            this.numHeader,
+            this.userHeader,
+            this.timeHeader,
+            this.statusHeader});
+            this.orderlistView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderlistView.FullRowSelect = true;
+            this.orderlistView.GridLines = true;
+            this.orderlistView.Location = new System.Drawing.Point(0, 0);
+            this.orderlistView.MultiSelect = false;
+            this.orderlistView.Name = "orderlistView";
+            this.orderlistView.Size = new System.Drawing.Size(700, 561);
+            this.orderlistView.TabIndex = 0;
+            this.orderlistView.UseCompatibleStateImageBehavior = false;
+            this.orderlistView.View = System.Windows.Forms.View.Details;
+            this.orderlistView.DoubleClick += new System.EventHandler(this.orderlistView_DoubleClick);
+            // 
+            // orderidHeader
+            // 
+            this.orderidHeader.Text = "订单号";
+            this.orderidHeader.Width = 100;
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.Text = "商品名称";
+            this.nameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nameHeader.Width = 100;
+            // 
+            // priceHeader
+            // 
+            this.priceHeader.Text = "单价";
+            this.priceHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.priceHeader.Width = 80;
+            // 
+            // numHeader
+            // 
+            this.numHeader.Text = "数量";
+            this.numHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numHeader.Width = 80;
+            // 
+            // userHeader
+            // 
+            this.userHeader.Text = "买家";
+            this.userHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userHeader.Width = 100;
+            // 
+            // timeHeader
+            // 
+            this.timeHeader.Text = "下单时间";
+            this.timeHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeHeader.Width = 150;
+            // 
+            // statusHeader
+            // 
+            this.statusHeader.Text = "订单状态";
+            this.statusHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.statusHeader.Width = 80;
             // 
             // infopanel
             // 
@@ -555,33 +796,6 @@
             this.label6.Text = "商店名称";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // allshoppanel
-            // 
-            this.allshoppanel.Controls.Add(this.shopstableLayout);
-            this.allshoppanel.Controls.Add(this.itemstableLayout);
-            this.allshoppanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.allshoppanel.Location = new System.Drawing.Point(0, 0);
-            this.allshoppanel.Name = "allshoppanel";
-            this.allshoppanel.Size = new System.Drawing.Size(700, 561);
-            this.allshoppanel.TabIndex = 0;
-            // 
-            // shopstableLayout
-            // 
-            this.shopstableLayout.AutoScroll = true;
-            this.shopstableLayout.ColumnCount = 4;
-            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.shopstableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.shopstableLayout.Location = new System.Drawing.Point(0, 0);
-            this.shopstableLayout.Name = "shopstableLayout";
-            this.shopstableLayout.RowCount = 2;
-            this.shopstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.shopstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.shopstableLayout.Size = new System.Drawing.Size(700, 561);
-            this.shopstableLayout.TabIndex = 0;
-            // 
             // itemstableLayout
             // 
             this.itemstableLayout.AutoScroll = true;
@@ -597,69 +811,6 @@
             this.itemstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.itemstableLayout.Size = new System.Drawing.Size(680, 309);
             this.itemstableLayout.TabIndex = 2;
-            // 
-            // orderlistView
-            // 
-            this.orderlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.orderidHeader,
-            this.nameHeader,
-            this.priceHeader,
-            this.numHeader,
-            this.userHeader,
-            this.timeHeader,
-            this.statusHeader});
-            this.orderlistView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderlistView.FullRowSelect = true;
-            this.orderlistView.GridLines = true;
-            this.orderlistView.Location = new System.Drawing.Point(0, 0);
-            this.orderlistView.MultiSelect = false;
-            this.orderlistView.Name = "orderlistView";
-            this.orderlistView.Size = new System.Drawing.Size(700, 561);
-            this.orderlistView.TabIndex = 0;
-            this.orderlistView.UseCompatibleStateImageBehavior = false;
-            this.orderlistView.View = System.Windows.Forms.View.Details;
-            this.orderlistView.DoubleClick += new System.EventHandler(this.orderlistView_DoubleClick);
-            // 
-            // nameHeader
-            // 
-            this.nameHeader.Text = "商品名称";
-            this.nameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nameHeader.Width = 100;
-            // 
-            // priceHeader
-            // 
-            this.priceHeader.Text = "单价";
-            this.priceHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.priceHeader.Width = 80;
-            // 
-            // numHeader
-            // 
-            this.numHeader.Text = "数量";
-            this.numHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numHeader.Width = 80;
-            // 
-            // userHeader
-            // 
-            this.userHeader.Text = "买家";
-            this.userHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.userHeader.Width = 100;
-            // 
-            // timeHeader
-            // 
-            this.timeHeader.Text = "下单时间";
-            this.timeHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.timeHeader.Width = 150;
-            // 
-            // statusHeader
-            // 
-            this.statusHeader.Text = "订单状态";
-            this.statusHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.statusHeader.Width = 80;
-            // 
-            // orderidHeader
-            // 
-            this.orderidHeader.Text = "订单号";
-            this.orderidHeader.Width = 100;
             // 
             // Main
             // 
@@ -678,6 +829,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.statisticspanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.statisticschart)).EndInit();
+            this.usermanagepanel.ResumeLayout(false);
+            this.allshoppanel.ResumeLayout(false);
             this.myorderpanel.ResumeLayout(false);
             this.infopanel.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -689,7 +844,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppictureBox)).EndInit();
-            this.allshoppanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -748,5 +902,18 @@
         private System.Windows.Forms.ColumnHeader userHeader;
         private System.Windows.Forms.ColumnHeader timeHeader;
         private System.Windows.Forms.ColumnHeader statusHeader;
+        private System.Windows.Forms.Panel usermanagepanel;
+        private System.Windows.Forms.ListView userslistView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.Button statisticsMenu;
+        private System.Windows.Forms.Panel statisticspanel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart statisticschart;
     }
 }

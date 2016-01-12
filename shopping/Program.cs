@@ -29,13 +29,14 @@ namespace shopping
 }
 public class User
 {
-
+    public int id;
+    public string username;
     public int role;
     public string name;
     public string phone;
     public string address;
     public double balance;
-    public int id;
+    public int status;
 }
 public class Shop
 {
@@ -64,6 +65,11 @@ public class Order
     public string time;
     public int status;
 }
+public class shopsales
+{
+    public string shopname;
+    public double sales;
+}
 public class DataBase
 {
     private bool login;
@@ -85,7 +91,7 @@ public class DataBase
     {
         return login;
     }
-    public bool Login(string uid, string pwd)
+    public int Login(string uid, string pwd)
     {
         SqlCommand cmd = sqlconn.CreateCommand();
         cmd.CommandText = "select * from s_user where username = @UID and password = @PWD";
@@ -100,6 +106,7 @@ public class DataBase
         cmd.Parameters.AddWithValue("@PWD", temp2); 
         SqlDataReader  reader = cmd.ExecuteReader();
         login = reader.Read();
+        int status = 0;
         if(login)
         {
             user.role = reader.GetInt32(3);
@@ -108,6 +115,7 @@ public class DataBase
             user.address = reader.GetString(6);
             user.balance = reader.GetDouble(7);
             user.id = reader.GetInt32(0);
+            status = reader.GetInt32(8);
             reader.Close();
             shop = new Shop();
             if (user.role == 2) 
@@ -119,13 +127,24 @@ public class DataBase
         {
             reader.Close();
         }
-        
-        return login;
+        if (login && status == 0)
+        {
+            return 0;
+        }
+        else if (login && status == 1) 
+        {
+            login = false;
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
     }
     public bool Register(string uid, string pwd, int role, string name, string phone, string address)
     {
         SqlCommand cmd = sqlconn.CreateCommand();
-        cmd.CommandText = "insert into s_user values(@UID,@PWD,@ROLE,@NAME,@PHONE,@ADDRESS,0)";
+        cmd.CommandText = "insert into s_user values(@UID,@PWD,@ROLE,@NAME,@PHONE,@ADDRESS,0,0)";
         cmd.Parameters.AddWithValue("@UID", uid);
         MD5 md5 = MD5.Create();
         byte[] temp = md5.ComputeHash(System.Text.Encoding.Default.GetBytes(pwd));
@@ -206,7 +225,7 @@ public class DataBase
     public bool additem(Item item)
     {
         SqlCommand cmd = sqlconn.CreateCommand();
-        cmd.CommandText = "insert into s_item values(@SHOPID,@NAME,@DESCRIPTION,@NUM,@PRICE,@PICTURE);";
+        cmd.CommandText = "insert into s_item values(@SHOPID,@NAME,@DESCRIPTION,@NUM,@PRICE,@PICTURE,0);";
         cmd.Parameters.AddWithValue("@SHOPID", item.shopid);
         cmd.Parameters.AddWithValue("@NAME", item.name);
         cmd.Parameters.AddWithValue("@DESCRIPTION", item.description);
@@ -285,7 +304,7 @@ public class DataBase
     public bool deleteitem(int itemid)
     {
         SqlCommand cmd = sqlconn.CreateCommand();
-        cmd.CommandText = "delete s_item where id = @ID";
+        cmd.CommandText = "update s_item set status = 1 where id = @ID";
         cmd.Parameters.AddWithValue("@ID", itemid);
         int result = cmd.ExecuteNonQuery();
         return result == 1 ? true : false;
@@ -385,5 +404,52 @@ public class DataBase
         cmd.Parameters.AddWithValue("@STATUS", status);
         int rtn = cmd.ExecuteNonQuery();
         return rtn == 1;
+    }
+    public User[] showusers()
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "select * from s_user";
+        SqlDataReader reader = cmd.ExecuteReader();
+        List<User> list = new List<User>();
+        while (reader.Read())
+        {
+            User temp = new User();
+            temp.id = reader.GetInt32(0);
+            temp.username = reader.GetString(1);
+            temp.role = reader.GetInt32(3);
+            temp.name = reader.GetString(4);
+            temp.phone = reader.GetString(5);
+            temp.address = reader.GetString(6);
+            temp.balance = reader.GetDouble(7);
+            temp.status = reader.GetInt32(8);
+            list.Add(temp);
+        }
+        reader.Close();
+        return list.ToArray();
+    }
+    public bool updateuser(int id, int status)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "update s_user set status = @STATUS where id = @ID;";
+        cmd.Parameters.AddWithValue("@ID", id);
+        cmd.Parameters.AddWithValue("@STATUS", status);
+        int rtn = cmd.ExecuteNonQuery();
+        return rtn == 1;
+    }
+    public shopsales[] statistics()
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "select * from statistics_view;";
+        SqlDataReader reader = cmd.ExecuteReader();
+        List<shopsales> list = new List<shopsales>();
+        while (reader.Read())
+        {
+            shopsales temp = new shopsales();
+            temp.shopname = reader.GetString(0);
+            temp.sales = reader.GetDouble(1);
+            list.Add(temp);
+        }
+        reader.Close();
+        return list.ToArray();
     }
 }
