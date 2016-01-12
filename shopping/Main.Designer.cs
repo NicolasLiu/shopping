@@ -35,8 +35,21 @@
             this.myshopMenu = new System.Windows.Forms.Button();
             this.allshopMenu = new System.Windows.Forms.Button();
             this.manageMenu = new System.Windows.Forms.Button();
+            this.myorderpanel = new System.Windows.Forms.Panel();
+            this.infopanel = new System.Windows.Forms.Panel();
+            this.save_button = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.shenfenlabel = new System.Windows.Forms.Label();
+            this.nameBox = new System.Windows.Forms.TextBox();
+            this.phoneBox = new System.Windows.Forms.TextBox();
+            this.addressBox = new System.Windows.Forms.TextBox();
+            this.balanceBox = new System.Windows.Forms.TextBox();
             this.myshoppanel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.itempriceBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,33 +68,32 @@
             this.label7 = new System.Windows.Forms.Label();
             this.shopnameBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.myorderpanel = new System.Windows.Forms.Panel();
-            this.infopanel = new System.Windows.Forms.Panel();
-            this.save_button = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.shenfenlabel = new System.Windows.Forms.Label();
-            this.nameBox = new System.Windows.Forms.TextBox();
-            this.phoneBox = new System.Windows.Forms.TextBox();
-            this.addressBox = new System.Windows.Forms.TextBox();
-            this.balanceBox = new System.Windows.Forms.TextBox();
+            this.allshoppanel = new System.Windows.Forms.Panel();
+            this.shopstableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.itemstableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.orderlistView = new System.Windows.Forms.ListView();
+            this.nameHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.priceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.numHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.userHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.statusHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.orderidHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.myorderpanel.SuspendLayout();
+            this.infopanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.myshoppanel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itempictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppictureBox)).BeginInit();
-            this.infopanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.allshoppanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -96,9 +108,10 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.myshoppanel);
             this.splitContainer1.Panel2.Controls.Add(this.myorderpanel);
             this.splitContainer1.Panel2.Controls.Add(this.infopanel);
+            this.splitContainer1.Panel2.Controls.Add(this.myshoppanel);
+            this.splitContainer1.Panel2.Controls.Add(this.allshoppanel);
             this.splitContainer1.Size = new System.Drawing.Size(784, 561);
             this.splitContainer1.SplitterDistance = 80;
             this.splitContainer1.TabIndex = 0;
@@ -198,212 +211,9 @@
             this.manageMenu.Visible = false;
             this.manageMenu.Click += new System.EventHandler(this.manageMenu_Click);
             // 
-            // myshoppanel
-            // 
-            this.myshoppanel.Controls.Add(this.tableLayoutPanel2);
-            this.myshoppanel.Controls.Add(this.panel2);
-            this.myshoppanel.Controls.Add(this.panel1);
-            this.myshoppanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myshoppanel.Location = new System.Drawing.Point(0, 0);
-            this.myshoppanel.Name = "myshoppanel";
-            this.myshoppanel.Size = new System.Drawing.Size(700, 561);
-            this.myshoppanel.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.AutoScroll = true;
-            this.tableLayoutPanel2.ColumnCount = 5;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(8, 240);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(680, 309);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel2.Controls.Add(this.itempriceBox);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.additembutton);
-            this.panel2.Controls.Add(this.itemnumBox);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.itemdesBox);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.itemnameBox);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.itempictureBox);
-            this.panel2.Location = new System.Drawing.Point(8, 126);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(680, 108);
-            this.panel2.TabIndex = 1;
-            // 
-            // itempriceBox
-            // 
-            this.itempriceBox.Location = new System.Drawing.Point(173, 37);
-            this.itempriceBox.Name = "itempriceBox";
-            this.itempriceBox.Size = new System.Drawing.Size(78, 21);
-            this.itempriceBox.TabIndex = 9;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(138, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "单价";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // additembutton
-            // 
-            this.additembutton.Location = new System.Drawing.Point(75, 73);
-            this.additembutton.Name = "additembutton";
-            this.additembutton.Size = new System.Drawing.Size(95, 31);
-            this.additembutton.TabIndex = 7;
-            this.additembutton.Text = "添加商品";
-            this.additembutton.UseVisualStyleBackColor = true;
-            this.additembutton.Click += new System.EventHandler(this.additembutton_Click);
-            // 
-            // itemnumBox
-            // 
-            this.itemnumBox.Location = new System.Drawing.Point(75, 37);
-            this.itemnumBox.Name = "itemnumBox";
-            this.itemnumBox.Size = new System.Drawing.Size(48, 21);
-            this.itemnumBox.TabIndex = 6;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 43);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "商品数量";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itemdesBox
-            // 
-            this.itemdesBox.Location = new System.Drawing.Point(254, 0);
-            this.itemdesBox.Name = "itemdesBox";
-            this.itemdesBox.Size = new System.Drawing.Size(314, 104);
-            this.itemdesBox.TabIndex = 4;
-            this.itemdesBox.Text = "";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(195, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 12);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "商品描述";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itemnameBox
-            // 
-            this.itemnameBox.Location = new System.Drawing.Point(75, 9);
-            this.itemnameBox.Name = "itemnameBox";
-            this.itemnameBox.Size = new System.Drawing.Size(100, 21);
-            this.itemnameBox.TabIndex = 2;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 12);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "商品名称";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // itempictureBox
-            // 
-            this.itempictureBox.Location = new System.Drawing.Point(577, 3);
-            this.itempictureBox.Name = "itempictureBox";
-            this.itempictureBox.Size = new System.Drawing.Size(100, 100);
-            this.itempictureBox.TabIndex = 0;
-            this.itempictureBox.TabStop = false;
-            this.itempictureBox.Click += new System.EventHandler(this.itempictureBox_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Controls.Add(this.shopinfobutton);
-            this.panel1.Controls.Add(this.shoppictureBox);
-            this.panel1.Controls.Add(this.shopdesBox);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.shopnameBox);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(8, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(680, 108);
-            this.panel1.TabIndex = 0;
-            // 
-            // shopinfobutton
-            // 
-            this.shopinfobutton.Location = new System.Drawing.Point(75, 54);
-            this.shopinfobutton.Name = "shopinfobutton";
-            this.shopinfobutton.Size = new System.Drawing.Size(100, 37);
-            this.shopinfobutton.TabIndex = 5;
-            this.shopinfobutton.Text = "更新商店信息";
-            this.shopinfobutton.UseVisualStyleBackColor = true;
-            this.shopinfobutton.Click += new System.EventHandler(this.shopinfobutton_Click);
-            // 
-            // shoppictureBox
-            // 
-            this.shoppictureBox.Location = new System.Drawing.Point(577, 5);
-            this.shoppictureBox.Name = "shoppictureBox";
-            this.shoppictureBox.Size = new System.Drawing.Size(100, 100);
-            this.shoppictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.shoppictureBox.TabIndex = 4;
-            this.shoppictureBox.TabStop = false;
-            this.shoppictureBox.Click += new System.EventHandler(this.shoppictureBox_Click);
-            // 
-            // shopdesBox
-            // 
-            this.shopdesBox.Location = new System.Drawing.Point(254, 1);
-            this.shopdesBox.Name = "shopdesBox";
-            this.shopdesBox.Size = new System.Drawing.Size(314, 104);
-            this.shopdesBox.TabIndex = 3;
-            this.shopdesBox.Text = "";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(195, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 12);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "商店描述";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // shopnameBox
-            // 
-            this.shopnameBox.Location = new System.Drawing.Point(75, 10);
-            this.shopnameBox.Name = "shopnameBox";
-            this.shopnameBox.Size = new System.Drawing.Size(100, 21);
-            this.shopnameBox.TabIndex = 1;
-            this.shopnameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "商店名称";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // myorderpanel
             // 
+            this.myorderpanel.Controls.Add(this.orderlistView);
             this.myorderpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.myorderpanel.Location = new System.Drawing.Point(0, 0);
             this.myorderpanel.Name = "myorderpanel";
@@ -558,6 +368,299 @@
             this.balanceBox.TabIndex = 10;
             this.balanceBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // myshoppanel
+            // 
+            this.myshoppanel.Controls.Add(this.panel2);
+            this.myshoppanel.Controls.Add(this.panel1);
+            this.myshoppanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.myshoppanel.Location = new System.Drawing.Point(0, 0);
+            this.myshoppanel.Name = "myshoppanel";
+            this.myshoppanel.Size = new System.Drawing.Size(700, 561);
+            this.myshoppanel.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel2.Controls.Add(this.itempriceBox);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.additembutton);
+            this.panel2.Controls.Add(this.itemnumBox);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.itemdesBox);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.itemnameBox);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.itempictureBox);
+            this.panel2.Location = new System.Drawing.Point(8, 126);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(680, 108);
+            this.panel2.TabIndex = 1;
+            // 
+            // itempriceBox
+            // 
+            this.itempriceBox.Location = new System.Drawing.Point(173, 37);
+            this.itempriceBox.Name = "itempriceBox";
+            this.itempriceBox.Size = new System.Drawing.Size(78, 21);
+            this.itempriceBox.TabIndex = 9;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(138, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 12);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "单价";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // additembutton
+            // 
+            this.additembutton.Location = new System.Drawing.Point(75, 73);
+            this.additembutton.Name = "additembutton";
+            this.additembutton.Size = new System.Drawing.Size(95, 31);
+            this.additembutton.TabIndex = 7;
+            this.additembutton.Text = "添加商品";
+            this.additembutton.UseVisualStyleBackColor = true;
+            this.additembutton.Click += new System.EventHandler(this.additembutton_Click);
+            // 
+            // itemnumBox
+            // 
+            this.itemnumBox.Location = new System.Drawing.Point(75, 37);
+            this.itemnumBox.Name = "itemnumBox";
+            this.itemnumBox.Size = new System.Drawing.Size(48, 21);
+            this.itemnumBox.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 43);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 12);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "商品数量";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // itemdesBox
+            // 
+            this.itemdesBox.Location = new System.Drawing.Point(254, 0);
+            this.itemdesBox.Name = "itemdesBox";
+            this.itemdesBox.Size = new System.Drawing.Size(314, 104);
+            this.itemdesBox.TabIndex = 4;
+            this.itemdesBox.Text = "";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(195, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 12);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "商品描述";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // itemnameBox
+            // 
+            this.itemnameBox.Location = new System.Drawing.Point(75, 9);
+            this.itemnameBox.Name = "itemnameBox";
+            this.itemnameBox.Size = new System.Drawing.Size(100, 21);
+            this.itemnameBox.TabIndex = 2;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 12);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "商品名称";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // itempictureBox
+            // 
+            this.itempictureBox.Location = new System.Drawing.Point(577, 3);
+            this.itempictureBox.Name = "itempictureBox";
+            this.itempictureBox.Size = new System.Drawing.Size(100, 100);
+            this.itempictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.itempictureBox.TabIndex = 0;
+            this.itempictureBox.TabStop = false;
+            this.itempictureBox.Click += new System.EventHandler(this.itempictureBox_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Controls.Add(this.shopinfobutton);
+            this.panel1.Controls.Add(this.shoppictureBox);
+            this.panel1.Controls.Add(this.shopdesBox);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.shopnameBox);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(8, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(680, 108);
+            this.panel1.TabIndex = 0;
+            // 
+            // shopinfobutton
+            // 
+            this.shopinfobutton.Location = new System.Drawing.Point(75, 54);
+            this.shopinfobutton.Name = "shopinfobutton";
+            this.shopinfobutton.Size = new System.Drawing.Size(100, 37);
+            this.shopinfobutton.TabIndex = 5;
+            this.shopinfobutton.Text = "更新商店信息";
+            this.shopinfobutton.UseVisualStyleBackColor = true;
+            this.shopinfobutton.Click += new System.EventHandler(this.shopinfobutton_Click);
+            // 
+            // shoppictureBox
+            // 
+            this.shoppictureBox.Location = new System.Drawing.Point(577, 5);
+            this.shoppictureBox.Name = "shoppictureBox";
+            this.shoppictureBox.Size = new System.Drawing.Size(100, 100);
+            this.shoppictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.shoppictureBox.TabIndex = 4;
+            this.shoppictureBox.TabStop = false;
+            this.shoppictureBox.Click += new System.EventHandler(this.shoppictureBox_Click);
+            // 
+            // shopdesBox
+            // 
+            this.shopdesBox.Location = new System.Drawing.Point(254, 1);
+            this.shopdesBox.Name = "shopdesBox";
+            this.shopdesBox.Size = new System.Drawing.Size(314, 104);
+            this.shopdesBox.TabIndex = 3;
+            this.shopdesBox.Text = "";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(195, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "商店描述";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // shopnameBox
+            // 
+            this.shopnameBox.Location = new System.Drawing.Point(75, 10);
+            this.shopnameBox.Name = "shopnameBox";
+            this.shopnameBox.Size = new System.Drawing.Size(100, 21);
+            this.shopnameBox.TabIndex = 1;
+            this.shopnameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "商店名称";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // allshoppanel
+            // 
+            this.allshoppanel.Controls.Add(this.shopstableLayout);
+            this.allshoppanel.Controls.Add(this.itemstableLayout);
+            this.allshoppanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allshoppanel.Location = new System.Drawing.Point(0, 0);
+            this.allshoppanel.Name = "allshoppanel";
+            this.allshoppanel.Size = new System.Drawing.Size(700, 561);
+            this.allshoppanel.TabIndex = 0;
+            // 
+            // shopstableLayout
+            // 
+            this.shopstableLayout.AutoScroll = true;
+            this.shopstableLayout.ColumnCount = 4;
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.shopstableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.shopstableLayout.Location = new System.Drawing.Point(0, 0);
+            this.shopstableLayout.Name = "shopstableLayout";
+            this.shopstableLayout.RowCount = 2;
+            this.shopstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.shopstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.shopstableLayout.Size = new System.Drawing.Size(700, 561);
+            this.shopstableLayout.TabIndex = 0;
+            // 
+            // itemstableLayout
+            // 
+            this.itemstableLayout.AutoScroll = true;
+            this.itemstableLayout.ColumnCount = 4;
+            this.itemstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.itemstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.itemstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.itemstableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.itemstableLayout.Location = new System.Drawing.Point(8, 240);
+            this.itemstableLayout.Name = "itemstableLayout";
+            this.itemstableLayout.RowCount = 2;
+            this.itemstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.itemstableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.itemstableLayout.Size = new System.Drawing.Size(680, 309);
+            this.itemstableLayout.TabIndex = 2;
+            // 
+            // orderlistView
+            // 
+            this.orderlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.orderidHeader,
+            this.nameHeader,
+            this.priceHeader,
+            this.numHeader,
+            this.userHeader,
+            this.timeHeader,
+            this.statusHeader});
+            this.orderlistView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.orderlistView.FullRowSelect = true;
+            this.orderlistView.GridLines = true;
+            this.orderlistView.Location = new System.Drawing.Point(0, 0);
+            this.orderlistView.MultiSelect = false;
+            this.orderlistView.Name = "orderlistView";
+            this.orderlistView.Size = new System.Drawing.Size(700, 561);
+            this.orderlistView.TabIndex = 0;
+            this.orderlistView.UseCompatibleStateImageBehavior = false;
+            this.orderlistView.View = System.Windows.Forms.View.Details;
+            this.orderlistView.DoubleClick += new System.EventHandler(this.orderlistView_DoubleClick);
+            // 
+            // nameHeader
+            // 
+            this.nameHeader.Text = "商品名称";
+            this.nameHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nameHeader.Width = 100;
+            // 
+            // priceHeader
+            // 
+            this.priceHeader.Text = "单价";
+            this.priceHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.priceHeader.Width = 80;
+            // 
+            // numHeader
+            // 
+            this.numHeader.Text = "数量";
+            this.numHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numHeader.Width = 80;
+            // 
+            // userHeader
+            // 
+            this.userHeader.Text = "买家";
+            this.userHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.userHeader.Width = 100;
+            // 
+            // timeHeader
+            // 
+            this.timeHeader.Text = "下单时间";
+            this.timeHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.timeHeader.Width = 150;
+            // 
+            // statusHeader
+            // 
+            this.statusHeader.Text = "订单状态";
+            this.statusHeader.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.statusHeader.Width = 80;
+            // 
+            // orderidHeader
+            // 
+            this.orderidHeader.Text = "订单号";
+            this.orderidHeader.Width = 100;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -569,12 +672,16 @@
             this.Name = "Main";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "淘小宝";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.myorderpanel.ResumeLayout(false);
+            this.infopanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.myshoppanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -582,9 +689,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shoppictureBox)).EndInit();
-            this.infopanel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.allshoppanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -632,6 +737,16 @@
         private System.Windows.Forms.TextBox itemnameBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox itempictureBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel itemstableLayout;
+        private System.Windows.Forms.Panel allshoppanel;
+        private System.Windows.Forms.TableLayoutPanel shopstableLayout;
+        private System.Windows.Forms.ListView orderlistView;
+        private System.Windows.Forms.ColumnHeader orderidHeader;
+        private System.Windows.Forms.ColumnHeader nameHeader;
+        private System.Windows.Forms.ColumnHeader priceHeader;
+        private System.Windows.Forms.ColumnHeader numHeader;
+        private System.Windows.Forms.ColumnHeader userHeader;
+        private System.Windows.Forms.ColumnHeader timeHeader;
+        private System.Windows.Forms.ColumnHeader statusHeader;
     }
 }

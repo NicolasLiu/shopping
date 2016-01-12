@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Collections.Generic;
+
 namespace shopping
 {
     static class Program
@@ -52,6 +54,16 @@ public class Item
     public double price;
     public byte[] picture;
 }
+public class Order
+{
+    public int id;
+    public string name;
+    public double price;
+    public int num;
+    public string username;
+    public string time;
+    public int status;
+}
 public class DataBase
 {
     private bool login;
@@ -97,12 +109,17 @@ public class DataBase
             user.balance = reader.GetDouble(7);
             user.id = reader.GetInt32(0);
             reader.Close();
+            shop = new Shop();
             if (user.role == 2) 
             {
-                shop = new Shop();
                 pullShopInfo();
             }
-        }        
+        }
+        else
+        {
+            reader.Close();
+        }
+        
         return login;
     }
     public bool Register(string uid, string pwd, int role, string name, string phone, string address)
@@ -229,8 +246,144 @@ public class DataBase
             result[i].num = reader.GetInt32(4);
             result[i].price = reader.GetDouble(5);
             result[i].picture = reader.IsDBNull(6) ? null : (byte[])reader.GetValue(6);
+            i++;
         }
         reader.Close();
         return result;
+    }
+    public Item getitem(int itemid)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "select * from s_item where id = @ID";
+        cmd.Parameters.AddWithValue("@ID", itemid);
+        SqlDataReader reader = cmd.ExecuteReader();
+        reader.Read();
+        Item item = new Item();
+        item.id = reader.GetInt32(0);
+        item.shopid = reader.GetInt32(1);
+        item.name = reader.GetString(2);
+        item.description = reader.IsDBNull(3) ? null : reader.GetString(3);
+        item.num = reader.GetInt32(4);
+        item.price = reader.GetDouble(5);
+        item.picture = reader.IsDBNull(6) ? null : (byte[])reader.GetValue(6);
+        reader.Close();
+        return item;
+    }
+    public bool updateitem(Item item)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "update s_item set name = @NAME, description = @DESCRIPTION, num = @NUM, price = @PRICE, picture = @PICTURE where id = @ID";
+        cmd.Parameters.AddWithValue("@ID", item.id);
+        cmd.Parameters.AddWithValue("@NAME", item.name);
+        cmd.Parameters.AddWithValue("@DESCRIPTION", item.description);
+        cmd.Parameters.AddWithValue("@NUM", item.num);
+        cmd.Parameters.AddWithValue("@PRICE", item.price);
+        cmd.Parameters.AddWithValue("@PICTURE", item.picture);
+        int result = cmd.ExecuteNonQuery();
+        return result == 1 ? true : false;
+    }
+    public bool deleteitem(int itemid)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "delete s_item where id = @ID";
+        cmd.Parameters.AddWithValue("@ID", itemid);
+        int result = cmd.ExecuteNonQuery();
+        return result == 1 ? true : false;
+    }
+    private int countshops()
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "select count(*) from s_shop;";
+        return (int)cmd.ExecuteScalar();
+    }
+    public Shop[] showshops()
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "select * from s_shop";
+        int num = countshops();
+        if (num == 0)
+        {
+            return null;
+        }
+        SqlDataReader reader = cmd.ExecuteReader();
+        Shop[] result = new Shop[num];
+        int i = 0;
+        while (reader.Read())
+        {
+            result[i] = new Shop();
+            result[i].id = reader.GetInt32(0);
+            result[i].name = reader.GetString(2);
+            result[i].description = reader.IsDBNull(3) ? null : reader.GetString(3);
+            result[i].data = reader.IsDBNull(4) ? null : (byte[])reader.GetValue(4);
+            i++;
+        }
+        reader.Close();
+        return result;
+    }
+    public int submitorder(int userid, int itemid, int num)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "submitorder @USERID,@ITEMID,@NUM;";
+        cmd.Parameters.AddWithValue("@USERID", userid);
+        cmd.Parameters.AddWithValue("@ITEMID", itemid);
+        cmd.Parameters.AddWithValue("@NUM", num);
+        int rtn = (int)cmd.ExecuteScalar();
+        return rtn;
+    }
+    public Order[] showorders(int role, int id)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        if (role == 1) 
+        {
+            cmd.CommandText = "select O.id,I.name,I.price,O.num,U.name,O.time,O.status from s_order O,s_user U,s_item I where U.id = @ID and U.id = O.userid and O.itemid = I.id order by O.time;";
+            cmd.Parameters.AddWithValue("@ID", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Order> list = new List<Order>();
+            while (reader.Read())
+            {
+                Order temp = new Order();
+                temp.id = reader.GetInt32(0);
+                temp.name = reader.GetString(1);
+                temp.price = reader.GetDouble(2);
+                temp.num = reader.GetInt32(3);
+                temp.username = reader.GetString(4);
+                temp.time = reader.GetDateTime(5).ToString();
+                temp.status = reader.GetInt32(6);
+                list.Add(temp);
+            }
+            reader.Close();
+            return list.ToArray();
+        }
+        else
+        {
+            cmd.CommandText = "select O.id,I.name,I.price,O.num,U.name,O.time,O.status from s_order O,s_user U,s_item I,s_shop S where S.id = @ID and I.shopid = S.id and U.id = O.userid and O.itemid = I.id order by O.time;";
+            cmd.Parameters.AddWithValue("@ID", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Order> list = new List<Order>();
+            while (reader.Read())
+            {
+                Order temp = new Order();
+                temp.id = reader.GetInt32(0);
+                temp.name = reader.GetString(1);
+                temp.price = reader.GetDouble(2);
+                temp.num = reader.GetInt32(3);
+                temp.username = reader.GetString(4);
+                temp.time = reader.GetDateTime(5).ToString();
+                temp.status = reader.GetInt32(6);
+                list.Add(temp);
+            }
+            reader.Close();
+            return list.ToArray();
+        }
+        
+    }
+    public bool updateorder(int id,int status)
+    {
+        SqlCommand cmd = sqlconn.CreateCommand();
+        cmd.CommandText = "update s_order set status = @STATUS where id = @ID;";
+        cmd.Parameters.AddWithValue("@ID", id);
+        cmd.Parameters.AddWithValue("@STATUS", status);
+        int rtn = cmd.ExecuteNonQuery();
+        return rtn == 1;
     }
 }
