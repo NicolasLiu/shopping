@@ -399,11 +399,18 @@ public class DataBase
     public bool updateorder(int id,int status)
     {
         SqlCommand cmd = sqlconn.CreateCommand();
-        cmd.CommandText = "update s_order set status = @STATUS where id = @ID;";
+        if (status == 1) 
+        {
+            cmd.CommandText = "finishorder @ID;";
+        }
+        else
+        {
+            cmd.CommandText = "cancelorder @ID;";
+        }
+        
         cmd.Parameters.AddWithValue("@ID", id);
-        cmd.Parameters.AddWithValue("@STATUS", status);
-        int rtn = cmd.ExecuteNonQuery();
-        return rtn == 1;
+        cmd.ExecuteNonQuery();
+        return true;
     }
     public User[] showusers()
     {
