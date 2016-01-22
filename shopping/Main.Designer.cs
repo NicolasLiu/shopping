@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -97,6 +98,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.itemstableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -915,5 +917,6 @@
         private System.Windows.Forms.Button statisticsMenu;
         private System.Windows.Forms.Panel statisticspanel;
         private System.Windows.Forms.DataVisualization.Charting.Chart statisticschart;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

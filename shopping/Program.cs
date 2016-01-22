@@ -238,7 +238,7 @@ public class DataBase
     private int countitems(int shopid)
     {
         SqlCommand cmd = sqlconn.CreateCommand();
-        cmd.CommandText = "select count(*) from s_item where shopid = @SHOPID";
+        cmd.CommandText = "select count(*) from s_item where shopid = @SHOPID and status = 0";
         cmd.Parameters.AddWithValue("@SHOPID", shopid);
         return (int)cmd.ExecuteScalar();
     }

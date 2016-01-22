@@ -85,6 +85,10 @@ namespace shopping
                     mstemp.Write(items[i].picture, 0, items[i].picture.Length);
                     picbox.Image = Image.FromStream(mstemp);
                     mstemp.Close();
+                    if (items[i].description != null)
+                    {
+                        toolTip1.SetToolTip(picbox, items[i].description);
+                    }
                     if (DB.user.role == 2)
                     {
                         picbox.Click += new System.EventHandler(this.itempicture_Click);
@@ -135,6 +139,10 @@ namespace shopping
                 picbox.Name = "shoppicturebox_" + shops[i].id;
                 picbox.Size = new System.Drawing.Size(100, 100);
                 picbox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+                if (shops[i].description != null)
+                {
+                    toolTip1.SetToolTip(picbox, shops[i].description);
+                }
                 
                 if (shops[i].data != null)
                 {
